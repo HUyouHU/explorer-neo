@@ -10,6 +10,7 @@
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
+            <local:HexToBrushConverter x:Key="HexToBrushConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
