@@ -5,7 +5,6 @@
     xmlns:local="using:CustomExplorer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:CommunityToolkit.WinUI.UI.Controls"
     mc:Ignorable="d">
 
     <Window.Resources>
@@ -34,8 +33,8 @@
             <!-- Folder Tree -->
             <TreeView x:Name="FolderTreeView" Grid.Column="0" Margin="5,0,0,5" />
 
-            <!-- Grid Splitter -->
-            <controls:GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+            <!-- Grid Splitter (replaced with a simple Border) -->
+            <Border Grid.Column="1" Width="1" Background="LightGray" />
 
             <!-- File List -->
             <ListView x:Name="FileListView" Grid.Column="2" Margin="0,0,0,5">
@@ -70,8 +69,8 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <!-- Grid Splitter -->
-            <controls:GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+            <!-- Grid Splitter (replaced with a simple Border) -->
+            <Border Grid.Column="3" Width="1" Background="LightGray" />
 
             <!-- Details Pane -->
             <ScrollViewer Grid.Column="4" Margin="5">
