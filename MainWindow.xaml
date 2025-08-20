@@ -1,0 +1,116 @@
+<Window
+    x:Class="CustomExplorer.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CustomExplorer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Window.Resources>
+        <local:HexToBrushConverter x:Key="HexToBrushConverter"/>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Address Bar -->
+        <TextBox Grid.Row="0" Text="C:\" Margin="5" />
+
+        <!-- Main Content -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" MinWidth="150"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="300" MinWidth="200"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Folder Tree -->
+            <TreeView x:Name="FolderTreeView" Grid.Column="0" Margin="5,0,0,5" />
+
+            <!-- Grid Splitter -->
+            <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+
+            <!-- File List -->
+            <ListView x:Name="FileListView" Grid.Column="2" Margin="0,0,0,5">
+                <!-- Header and Item Templates remain the same -->
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <Grid Padding="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="Name" Style="{ThemeResource BaseTextBlockStyle}"/>
+                            <TextBlock Grid.Column="1" Text="Date modified" Style="{ThemeResource BaseTextBlockStyle}"/>
+                            <TextBlock Grid.Column="2" Text="Type" Style="{ThemeResource BaseTextBlockStyle}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:FileSystemItem">
+                        <Grid Padding="12">
+                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="150"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding Name}" Foreground="{Binding Color, Converter={StaticResource HexToBrushConverter}}"/>
+                            <TextBlock Grid.Column="1" Text="{Binding DateModified}"/>
+                            <TextBlock Grid.Column="2" Text="{Binding Type}"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Grid Splitter -->
+            <GridSplitter Grid.Column="3" Width="5" HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+
+            <!-- Details Pane -->
+            <ScrollViewer Grid.Column="4" Margin="5">
+                <StackPanel x:Name="DetailsPanel" Visibility="Collapsed">
+                    <TextBlock Text="Folder Details" Style="{ThemeResource TitleTextBlockStyle}" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Color (e.g. #RRGGBB)" Margin="0,10,0,0"/>
+                    <TextBox x:Name="ColorTextBox" />
+
+                    <TextBlock Text="Tags (comma-separated)" Margin="0,10,0,0"/>
+                    <TextBox x:Name="TagsTextBox" />
+
+                    <TextBlock Text="Comment" Margin="0,10,0,0"/>
+                    <TextBox x:Name="CommentTextBox" AcceptsReturn="True" Height="100" />
+
+                    <Button x:Name="SaveChangesButton" Content="Save Metadata" Margin="0,10,0,0"/>
+
+                    <TextBlock Text="Todo List" Style="{ThemeResource SubtitleTextBlockStyle}" Margin="0,20,0,10"/>
+                    <ListView x:Name="TodoListView" Height="200">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="local:TodoItem">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox x:Name="TodoCheckBox" IsChecked="{Binding IsCompleted}" VerticalAlignment="Center" Checked="TodoCheckBox_Changed" Unchecked="TodoCheckBox_Changed" Tag="{Binding Id}"/>
+                                    <TextBox Grid.Column="1" Text="{Binding Task}" VerticalAlignment="Center" Margin="10,0" LostFocus="TodoTextBox_LostFocus" Tag="{Binding Id}"/>
+                                    <Button Grid.Column="2" x:Name="DeleteTodoButton" Content="Delete" Click="DeleteTodoButton_Click" Tag="{Binding Id}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,10,0,0">
+                        <TextBox x:Name="NewTodoTextBox" PlaceholderText="New todo..." MinWidth="150"/>
+                        <Button x:Name="AddTodoButton" Content="Add"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
