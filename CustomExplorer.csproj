@@ -10,6 +10,12 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <WindowsAppSDKSelfContained>true</WindowsAppSDKSelfContained>
+
+    <!-- Additions based on official templates -->
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <AppxPackageSigningEnabled>false</AppxPackageSigningEnabled>
+    <AppxPackageIsForStore>false</AppxPackageIsForStore>
+    <AppxPriInitialPath>Package.appxmanifest</AppxPriInitialPath>
   </PropertyGroup>
 
   <ItemGroup>
