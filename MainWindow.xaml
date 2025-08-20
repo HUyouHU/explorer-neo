@@ -14,7 +14,7 @@
         </Grid.RowDefinitions>
 
         <!-- Address Bar -->
-        <TextBox Grid.Row="0" Text="C:\" Margin="5" />
+        <TextBox x:Name="AddressBar" Grid.Row="0" Text="C:\" Margin="5" />
 
         <!-- Main Content -->
         <Grid Grid.Row="1">
@@ -27,13 +27,19 @@
             </Grid.ColumnDefinitions>
 
             <!-- Folder Tree -->
-            <TreeView x:Name="FolderTreeView" Grid.Column="0" Margin="5,0,0,5" />
+            <TreeView x:Name="FolderTreeView"
+                      Grid.Column="0"
+                      Margin="5,0,0,5"
+                      ItemsSource="{Binding RootFolderNodes}"
+                      ItemTemplate="{StaticResource FolderTreeTemplate}"
+                      ItemInvoked="FolderTreeView_ItemInvoked"
+                      Expanding="FolderTreeView_Expanding"/>
 
             <!-- Grid Splitter (replaced with a simple Border) -->
             <Border Grid.Column="1" Width="1" Background="LightGray" />
 
             <!-- File List -->
-            <ListView x:Name="FileListView" Grid.Column="2" Margin="0,0,0,5">
+            <ListView x:Name="FileListView" Grid.Column="2" Margin="0,0,0,5" IsItemClickEnabled="True" DoubleTapped="FileListView_DoubleTapped">
                 <!-- Header and Item Templates remain the same -->
                 <ListView.HeaderTemplate>
                     <DataTemplate>

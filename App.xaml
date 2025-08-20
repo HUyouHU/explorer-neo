@@ -11,6 +11,10 @@
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
             <local:HexToBrushConverter x:Key="HexToBrushConverter"/>
+
+            <HierarchicalDataTemplate x:Key="FolderTreeTemplate" ItemsSource="{Binding Children}" x:DataType="local:FolderNode">
+                <TextBlock Text="{Binding Name}" />
+            </HierarchicalDataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
