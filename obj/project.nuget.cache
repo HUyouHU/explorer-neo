@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "wk62HK7h74w=",
-  "success": false,
+  "dgSpecHash": "+cZ8wg+l6hg=",
+  "success": true,
   "projectFilePath": "C:\\Users\\admin\\Documents\\GitHub\\explorer-neo\\CustomExplorer.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.data.sqlite\\8.0.0\\microsoft.data.sqlite.8.0.0.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.0\\microsoft.data.sqlite.core.8.0.0.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22621.755\\microsoft.windows.sdk.buildtools.10.0.22621.755.nupkg.sha512",
-    "C:\\Users\\admin\\.nuget\\packages\\microsoft.windowsappsdk\\1.4.231115000\\microsoft.windowsappsdk.1.4.231115000.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.26100.1\\microsoft.windows.sdk.buildtools.10.0.26100.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.windowsappsdk\\1.5.240428000\\microsoft.windowsappsdk.1.5.240428000.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.1.6\\sqlitepclraw.bundle_e_sqlite3.2.1.6.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\sqlitepclraw.core\\2.1.6\\sqlitepclraw.core.2.1.6.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.1.6\\sqlitepclraw.lib.e_sqlite3.2.1.6.nupkg.sha512",
@@ -26,12 +26,13 @@
   ],
   "logs": [
     {
-      "code": "NU1102",
-      "level": "Error",
-      "message": "バージョン (>= 8.0.0) のパッケージ CommunityToolkit.WinUI.UI.Controls が見つかりません\r\n  - 6 バージョンが nuget.org に見つかりました。 [ 最も近いバージョン: 7.1.2 ]\r\n  - 0 バージョンが Microsoft Visual Studio Offline Packages に見つかりました",
+      "code": "NU1603",
+      "level": "Warning",
+      "message": "CustomExplorer は Microsoft.Windows.SDK.BuildTools (>= 10.0.22621.3447) に依存しますが、Microsoft.Windows.SDK.BuildTools 10.0.22621.3447 が見つかりませんでした。代わりに Microsoft.Windows.SDK.BuildTools 10.0.26100.1 が解決されました。",
       "projectPath": "C:\\Users\\admin\\Documents\\GitHub\\explorer-neo\\CustomExplorer.csproj",
+      "warningLevel": 1,
       "filePath": "C:\\Users\\admin\\Documents\\GitHub\\explorer-neo\\CustomExplorer.csproj",
-      "libraryId": "CommunityToolkit.WinUI.UI.Controls",
+      "libraryId": "Microsoft.Windows.SDK.BuildTools",
       "targetGraphs": [
         "net6.0-windows10.0.19041",
         "net6.0-windows10.0.19041/win10-arm64",
